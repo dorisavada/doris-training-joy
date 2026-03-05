@@ -7,15 +7,10 @@ const POSTS_ENDPOINT = "posts";
 const COMMENTS_ENDPOINT = "comments";
 
 const fetchList = async (endpoint) => {
-  try {
     const response = await fetch(`${API_URL}/${endpoint}`);
     if (!response.ok) throw new Error(`Error ${response.status}`);
 
     return response.json();
-  } catch (error) {
-    console.error("Fetch list failed:", error.message);
-    throw error;
-  }
 };
 
 const main = async () => {
