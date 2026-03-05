@@ -1,3 +1,4 @@
+q
 // 1. Use this Fake JSON API: https://jsonplaceholder.typicode.com/
 const API_URL = "https://jsonplaceholder.typicode.com";
 
@@ -103,29 +104,20 @@ const main = async () => {
 
   // 8. Get the post with ID of 1 via API request, at the same time get comments for post ID of 1 via another API request. Merge the post data with format:
   const fetchPostDetail = async (id) => {
-    try {
       const response = await fetch(`${API_URL}/${POSTS_ENDPOINT}/${id}`);
       if (!response.ok) throw new Error(`Error ${response.status}`);
 
       return response.json();
-    } catch (error) {
-      console.error("Fetch detail failed:", error.message);
-      throw error;
-    }
+
   };
 
   const fetchCommentsPost = async (id) => {
-    try {
       const response = await fetch(
         `${API_URL}/${POSTS_ENDPOINT}/${id}/${COMMENTS_ENDPOINT}`
       );
       if (!response.ok) throw new Error(`Error ${response.status}`);
 
       return response.json();
-    } catch (error) {
-      console.error("Fetch comments failed:", error.message);
-      throw error;
-    }
   };
 
   const [firstPost, firstPostComments] = await Promise.all([
@@ -140,4 +132,6 @@ const main = async () => {
   console.log({ firstPostWithComments });
 };
 
-main();
+main().catch((error) => {
+  console.error("Main failed:", error.message);
+});
