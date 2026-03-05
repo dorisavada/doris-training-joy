@@ -1,4 +1,3 @@
-q
 // 1. Use this Fake JSON API: https://jsonplaceholder.typicode.com/
 const API_URL = "https://jsonplaceholder.typicode.com";
 
